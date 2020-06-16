@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+.vscode
+*.crt
+*.key
+*.srl
+*.csr
+npm-debug.log
+yarn-error.log

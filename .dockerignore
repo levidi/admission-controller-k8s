@@ -1,0 +1,13 @@
+.DS_Store
+npm-debug.log
+yarn-error.log
+.git
+*Dockerfile*
+*docker-compose*
+node_modules
+README.md
+.vscode
+*.crt
+*.key
+*.srl
+*.csr
