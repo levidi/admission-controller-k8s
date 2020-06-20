@@ -7,7 +7,7 @@ yarn-error.log
 node_modules
 README.md
 .vscode
-*.crt
-*.key
-*.srl
-*.csr
+# *.crt
+# *.key
+# *.srl
+# *.csr

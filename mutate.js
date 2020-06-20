@@ -1,15 +1,37 @@
 const mutate = (req, res, next) => {
-    console.log(req.body)
-    console.log(req.body.request)
-    let adminResp = {
+
+    const authz_container = {
+        "image": "leviditomazzo/authz:v1",
+        "name": "authz",
+        "ports": [{
+            "containerPort": 50051
+        }]
+    }
+
+    const label = {
+        "op": "add",
+        "path": "/metadata/labels/securityTypeInBound",
+        "value": "enable"
+    }
+
+    const container = {
+        "op": "add",
+        "path": "/spec/containers/-",
+        "value": authz_container,
+    }
+
+    const patch = [label, container]
+
+    const patchBase64 = Buffer.from(JSON.stringify(patch)).toString("base64");
+
+    const result = {
         response: {
             allowed: true,
-            patch: Buffer.from("[{ \"op\": \"add\", \"path\": \"/metadata/labels/foo\", \"value\": \"bar\" }]").toString('base64'),
+            patch: patchBase64,
             patchType: "JSONPatch",
         }
     }
-    console.log(adminResp)
-    res.send(adminResp)
+    res.send(result)
 }
 
 module.exports = mutate
