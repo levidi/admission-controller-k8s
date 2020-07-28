@@ -1,5 +1,5 @@
 
-# A simple project for demonstrate how to use custom dynamic admission control in kubernetes
+# Custom dynamic admission control in kubernetes
 
 ## Docker
 
@@ -8,3 +8,6 @@
 ```bash
 docker build -t {user}/admission-controller-k8s:{version} .
 ```
+docker build -t leviditomazzo/admission-controller-k8s:v1 .
+
+kubectl logs  -c webhook-server -n security 
